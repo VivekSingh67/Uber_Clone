@@ -7,6 +7,7 @@ import Captainlogin from "./pages/Captainlogin";
 import CaptainSignup from "./pages/CaptainSignup";
 import Start from "./pages/Start";
 import UserProtectWrapper from "./pages/UserProtectWrapper";
+import UserLogout from "./pages/UserLogout";
 
 const App = () => {
   return (
@@ -25,7 +26,16 @@ const App = () => {
             </UserProtectWrapper>
           }
         />
+        <Route
+          path="/user/logout"
+          element={
+            <UserProtectWrapper>
+              <UserLogout />
+            </UserProtectWrapper>
+          }
+        />
       </Routes>
+      
     </div>
   );
 };
