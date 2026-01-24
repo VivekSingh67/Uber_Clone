@@ -72,9 +72,9 @@ const captainLogin = async (req, res) => {
   });
 };
 
-const getCaptainProfile = (req, res) => {
-
-};
+const getCaptainProfile = async (req, res, next) => {
+    res.status(200).json({ captain: req.captain });
+}
 
 const logoutCaptain = async (req, res) =>{
 res.clearCookie("token")

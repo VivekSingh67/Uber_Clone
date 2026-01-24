@@ -57,7 +57,9 @@ const longinUser = async (req, res, next) => {
   });
 };
 
-const getUserProfile = (req, res, next) => {};
+const getUserProfile = (req, res, next) => {
+    res.status(200).json(req.user);
+};
 
 const logoutUser = async (req, res) => {
   res.clearCookie("token");
