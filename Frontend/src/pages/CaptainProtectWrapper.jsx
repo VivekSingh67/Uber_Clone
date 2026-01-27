@@ -3,22 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { CaptainDataContext } from "../context/CaptainContext";
 import axios from "axios";
 const CaptainProtectWrapper = ({ children }) => {
-  let token = localStorage.getItem("token");
   const navigate = useNavigate();
   const {captain, setCaptain} = useContext(CaptainDataContext)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/captain-login");
-      return;
-    }
-
+  useEffect(() => {    
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/api/captain/profile`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      .get(`${import.meta.env.VITE_BASE_URL}/captain/profile`,{
+        withCredentials: true
       })
       .then((response) => {
         if (response.status === 200) {
@@ -27,11 +19,9 @@ const CaptainProtectWrapper = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
-        localStorage.removeItem("token");
         navigate("/captain-login");
       });
-  }, [token, navigate]);
+  }, [navigate]);
 
   if(isLoading){
     return(

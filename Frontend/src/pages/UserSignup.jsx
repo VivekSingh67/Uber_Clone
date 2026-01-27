@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserDataContext } from "../context/UserContext";
-UserDataContext
+UserDataContext;
 const UserSignup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,13 +28,14 @@ const UserSignup = () => {
     };
 
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/auth/register`,
+      `${import.meta.env.VITE_BASE_URL}/user/register`,
       newUser,
+      { withCredentials: true },
     );
 
     if (response.status == 201) {
       const data = response.data;
-      localStorage.setItem('token', JSON.stringify(data.token))
+      localStorage.setItem("token", JSON.stringify(data.token));
       setUser(data.user);
 
       navigate("/home");

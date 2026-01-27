@@ -19,9 +19,8 @@ const Captainlogin = () => {
     };
 
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/captain/login`,
-      captainData,
-    );
+      `${import.meta.env.VITE_BASE_URL}/captain/login`,
+      captainData,{ withCredentials: true });
 
 
     if (response.status == 200) {
