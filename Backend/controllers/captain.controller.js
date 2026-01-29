@@ -79,8 +79,7 @@ const getCaptainProfile = async (req, res, next) => {
 const logoutCaptain = async (req, res) =>{
 res.clearCookie("token")
 
-let token = req.cookies.token || req.header.authorization.split(" ")[1];
- await blacklistTokenModel.create({ token });
+let token = req.cookies.token;
   res.status(200).json({ message: "logged out" });
 }
 
