@@ -1,8 +1,14 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Riding = () => {
   return (
     <div className="h-screen">
+      <div className="fixed p-3 top-0 flex items-center justify-between w-full">
+        <img src="" alt="" />
+        <Link to="/home" className="fixed right-2 top-2 h-10 w-10 bg-white flex items-center justify-center rounded-full">
+      <i className="ri-home-5-line"></i>
+      </Link>
+      </div>
       <div className="h-1/2">
         <img
           className="h-full w-full object-cover"
@@ -45,7 +51,9 @@ const Riding = () => {
             </div>
           </div>
         </div>
-        <button className="w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg">Make a Payment</button>
+        <button className="w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg">
+          Make a Payment
+        </button>
       </div>
     </div>
   );
