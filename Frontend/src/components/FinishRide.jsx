@@ -1,28 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom';
 
-const ConfirmRidePopUp = (props) => {
-  const [otp, setOpt] = useState("");
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    console.log(otp)
-  };
+const FinishRide = (props) => {
   return (
     <div>
       <h5
         className="p-1 text-center w-[93%] absolute top-0"
         onClick={() => {
-          props.setRidePopUpPanel(false);
+          props.setFinishRidePanel(false);
         }}
       >
         <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i>
       </h5>
 
       <h3 className="text-2xl font-semibold mb-5">
-        Confirm this rode to start
+        Finish this rode
       </h3>
-      <div className="flex items-center justify-between p-3 bg-yellow-400 rounded-lg mt-4">
+      <div className="flex items-center justify-between p-3 border-2 border-yellow-400 rounded-lg mt-4">
         <div className="flex items-center gap-3">
           <img
             className="h-12 w-12 rounded-full object-cover"
@@ -68,39 +62,16 @@ const ConfirmRidePopUp = (props) => {
       </div>
 
       <div className="mt-3 w-full">
-        <form
-          onSubmit={(e) => {
-            submitHandler(e);
-          }}
-        >
-          <input
-            value={otp}
-            onChange={(e) => {
-              setOpt(e.target.value);
-            }}
-            type="text"
-            className="bg-[#eee] px-6 py-4 font-mono text-lg rounded-lg w-full mt-3"
-            placeholder="Enter OTP"
-          />
-          <button
-            onClick={() => {
-              props.setConfirmRidePopUpPanel(false);
-              props.setRidePopUpPanel(false);
-            }}
-            className="w-full mt-4 bg-red-700 text-white font-semibold p-2 rounded-lg"
-          >
-            Cancel
-          </button>
+            <input type="text" className="bg-[#eee] px-6 py-4 font-mono text-lg rounded-lg w-full mt-3" placeholder="Enter OTP" />
           <Link
-            to="/captain-riding"
+            to="/captain-home"
             className="w-full flex justify-center mt-2 bg-green-600 text-white font-semibold p-2 rounded-lg"
           >
-            Confirm
+            Finish Ride
           </Link>
-        </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ConfirmRidePopUp;
+export default FinishRide
